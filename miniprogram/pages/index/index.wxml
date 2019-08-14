@@ -1,0 +1,35 @@
+<!--index.wxml-->
+<view class="container">
+<scroll-view scroll-x style="height:30px;white-space:nowrap;">
+      <view 
+        wx:for="{{groupList}}" 
+        wx:key="{{item.type}}"
+        catchtap="checkTab" 
+        data-type="{{item.type}}"
+        data-index="{{index}}"
+        class="inline {{activeType == item.type ? 'active' : ''}}">
+        {{item.name}}
+      </view>
+  </scroll-view>
+  <swiper indicator-dots="{{indicatorDots}}"
+  class="swiper"
+  height="100"
+  autoplay="{{autoplay}}" 
+  interval="{{interval}}"
+  bindchange="swiperHandle"
+  current="{{activeIndex}}" 
+  duration="{{duration}}">
+    <swiper-item wx:for="{{groupList}}" wx:key="{{item.type}}" class="swiper__item" data-type="{{item.type}}">
+       <view class="swiper__tit">{{item.name}}</view>
+       <view class="swiper__box">
+       <view wx:for="{{item.radioList}}" wx:key="{{item.radioId}}" class="swiper__box__item">
+        <image style="width:220rpx; height:220rpx; background-color: #eeeeee;" mode="{{item.mode}}" src="{{item.radioImg}}"></image>
+        <text class="swiper__img__tit">{{item.radioName}}</text>
+        <view>
+          <text class="swiper__img__num">播放量:{{item.listenNum >= 10000 ? (item.listenNum/10000) + '万' : item.listenNum}}</text>
+        </view>
+       </view>
+       </view>
+    </swiper-item>
+</swiper>
+</view>
