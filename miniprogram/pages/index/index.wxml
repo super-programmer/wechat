@@ -1,11 +1,13 @@
 <!--index.wxml-->
-<view class="container">
-<scroll-view scroll-x style="height:30px;white-space:nowrap;">
+<mp-loading type="circle" show="{{showLoading}}" animated="{{animated}}"></mp-loading>
+<view class="container" wx-if="{{!showLoading}}">
+<scroll-view scroll-x style="height:30px;white-space:nowrap;border-bottom:10px solid #f0f0f0;" scroll-into-view="{{activeTabView}}">
       <view 
         wx:for="{{groupList}}" 
         wx:key="{{item.type}}"
         catchtap="checkTab" 
         data-type="{{item.type}}"
+        id="tab{{index}}"
         data-index="{{index}}"
         class="inline {{activeType == item.type ? 'active' : ''}}">
         {{item.name}}
@@ -26,7 +28,7 @@
         <image style="width:220rpx; height:220rpx; background-color: #eeeeee;" mode="{{item.mode}}" src="{{item.radioImg}}"></image>
         <text class="swiper__img__tit">{{item.radioName}}</text>
         <view>
-          <text class="swiper__img__num">播放量:{{item.listenNum >= 10000 ? (item.listenNum/10000) + '万' : item.listenNum}}</text>
+          <text class="swiper__img__num">播放量:{{item.listenNum}}</text>
         </view>
        </view>
        </view>

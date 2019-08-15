@@ -42,9 +42,14 @@ page {
   padding:10rpx;
 }
 .swiper__img__tit{
-  font-size:30rpx;
+  font-size:28rpx;
 }
 .swiper__img__num{
-  font-size:30rpx;
+  font-size:26rpx;
   color:#666;
+}
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
 }
